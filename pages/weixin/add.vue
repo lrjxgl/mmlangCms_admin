@@ -15,10 +15,6 @@
 						<td><input class="input-text" type="text" name="title"   v-model="data.title" ></td>
 						</tr>
   <tr>
-						<td>dateline：</td>		
-						<td><input class="input-text" type="text" name="dateline"   v-model="data.dateline" ></td>
-						</tr>
-  <tr>
 						<td>状态：</td>		
 						<td>
 						<input type="text" class="none" name="status" v-model="data.status" />
@@ -126,6 +122,10 @@
 						<td>0直接登录：</td>		
 						<td><input class="input-text" type="text" name="openlogin"   v-model="data.openlogin" ></td>
 						</tr>
+  <tr>
+						<td>createtime：</td>		
+						<td><input class="input-text" type="text" name="createtime"   v-model="data.createtime" ></td>
+						</tr>
 </table> <button form-type="submit" class="btn-row-submit">保存</button> 
 </form>
 	</view>
@@ -173,17 +173,38 @@
 						id: this.id
 					},
 					success: function(res) {
-						if (Object.keys(res.data).length > 0) {
-							that.data = res.data;
-							that.imgsList = res.imgsdata;
+						if (Object.keys(res.data.data).length > 0) {
+							that.data = res.data.data;
+							that.imgsList = res.data.imgsdata;
 						} else {
 							that.data = {
-								id: 0,
-								title: "",
-								typeid: 0,
-								total_money: 0,
-								description: "",
-								imgsdata: ""
+								
+id: "0",
+token: "",
+title: "",
+status: "0",
+userid: "0",
+domain: "",
+catid: "0",
+logo: "",
+imgurl: "",
+isrecommend: "0",
+imgsdata: "",
+appid: "",
+appkey: "",
+isshow: "0",
+ysid: "",
+shopid: "0",
+wx_username: "",
+wx_pwd: "",
+enkey: "",
+mchid: "",
+mchkey: "",
+sslcert_path: "",
+sslkey_path: "",
+openlogin: "0",
+createtime: "",
+
 							}
 						}
 

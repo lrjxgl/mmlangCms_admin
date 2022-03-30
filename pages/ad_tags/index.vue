@@ -113,10 +113,10 @@
 					url: that.app.apiHost + "/admin/ad_tags/index",
 					success: function(res) {
 						that.pageLoad = true;
-						that.list = res.list;
-						that.per_page = res.per_page;
+						that.list = res.data.list;
+						that.per_page = res.data.per_page;
 						if (that.per_page > 0) {
-							that.pageList = that.app.pageList(res.rscount, res.limit, res.per_page);
+							that.pageList = that.app.pageList(res.data.rscount, res.data.limit, res.data.per_page);
 						}
 
 					}
@@ -133,13 +133,13 @@
 						per_page: that.per_page
 					},
 					success: function(res) {
-						that.per_page = res.per_page;
+						that.per_page = res.data.per_page;
 						if (that.isFirst) {
-							that.list = res.list;
+							that.list = res.data.list;
 							that.isFirst = false;
 						} else {
-							for (var i in res.list) {
-								that.list.push(res.list[i]);
+							for (var i in res.data.list) {
+								that.list.push(res.data.list[i]);
 							}
 						}
 
@@ -154,7 +154,7 @@
 						tag_id: item.tag_id
 					},
 					success: function(res) {
-						item.status = res.status;
+						item.status = res.data.status;
 					}
 				})
 			},
@@ -166,7 +166,7 @@
 						tag_id: item.tag_id
 					},
 					success: function(res) {
-						item.is_recommend = res.is_recommend;
+						item.is_recommend = res.data.is_recommend;
 					}
 				})
 			},

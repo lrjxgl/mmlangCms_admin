@@ -29,10 +29,6 @@
 						</td>
 						</tr>
   <tr>
-						<td>创建时间：</td>		
-						<td><input class="input-text" type="text" name="dateline"   v-model="data.dateline" ></td>
-						</tr>
-  <tr>
 						<td>备注：</td>		
 						<td><input class="input-text" type="text" name="info"   v-model="data.info" ></td>
 						</tr>
@@ -79,6 +75,10 @@
   <tr>
 						<td>银行卡：</td>		
 						<td><input class="input-text" type="text" name="bankid"   v-model="data.bankid" ></td>
+						</tr>
+  <tr>
+						<td>createtime：</td>		
+						<td><input class="input-text" type="text" name="createtime"   v-model="data.createtime" ></td>
 						</tr>
 </table> <button form-type="submit" class="btn-row-submit">保存</button> 
 </form>
@@ -127,17 +127,31 @@
 						id: this.id
 					},
 					success: function(res) {
-						if (Object.keys(res.data).length > 0) {
-							that.data = res.data;
-							that.imgsList = res.imgsdata;
+						if (Object.keys(res.data.data).length > 0) {
+							that.data = res.data.data;
+							that.imgsList = res.data.imgsdata;
 						} else {
 							that.data = {
-								id: 0,
-								title: "",
-								typeid: 0,
-								total_money: 0,
-								description: "",
-								imgsdata: ""
+								
+id: "0",
+objectid: "0",
+k: "",
+money: "0",
+status: "0",
+info: "",
+reply: "",
+redateline: "0",
+siteid: "0",
+yhk_name: "",
+yhk_haoma: "",
+yhk_huming: "",
+telephone: "",
+yhk_address: "",
+adminid: "0",
+paytype: "",
+bankid: "0",
+createtime: "",
+
 							}
 						}
 

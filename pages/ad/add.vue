@@ -164,7 +164,7 @@
 						tag_id:tag_id
 					},
 					success:function(res){
-						that.tagList_2nd=res.list;
+						that.tagList_2nd=res.data.list;
 					}
 				})
 			},
@@ -176,8 +176,8 @@
 						id: this.id
 					},
 					success: function(res) {
-						if (Object.keys(res.data).length>0) {
-							that.data = res.data;
+						if (Object.keys(res.data.data).length>0) {
+							that.data = res.data.data;
 						} else {
 							that.data = {
 								 
@@ -202,8 +202,8 @@
 							}
 						}
 						console.log(that.data)
-						that.tagList = res.tagList;
-						that.tagList_2nd = res.tagList_2nd;
+						that.tagList = res.data.tagList;
+						that.tagList_2nd = res.data.tagList_2nd;
 						that.pageLoad = true;
 					}
 				})

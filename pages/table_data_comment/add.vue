@@ -99,17 +99,24 @@
 						id: this.id
 					},
 					success: function(res) {
-						if (Object.keys(res.data).length > 0) {
-							that.data = res.data;
-							that.imgsList = res.imgsdata;
+						if (Object.keys(res.data.data).length > 0) {
+							that.data = res.data.data;
+							that.imgsList = res.data.imgsdata;
 						} else {
 							that.data = {
-								id: 0,
-								title: "",
-								typeid: 0,
-								total_money: 0,
-								description: "",
-								imgsdata: ""
+								
+id: "0",
+userid: "0",
+status: "0",
+objectid: "0",
+pid: "0",
+createtime: "",
+content: "",
+ip: "",
+ip_city: "",
+love_num: "0",
+imgsdata: "",
+
 							}
 						}
 

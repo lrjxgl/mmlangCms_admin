@@ -11,10 +11,6 @@
 						<td><input class="input-text" type="text" name="title"   v-model="data.title" ></td>
 						</tr>
   <tr>
-						<td>dateline：</td>		
-						<td><input class="input-text" type="text" name="dateline"   v-model="data.dateline" ></td>
-						</tr>
-  <tr>
 						<td>shopid：</td>		
 						<td><input class="input-text" type="text" name="shopid"   v-model="data.shopid" ></td>
 						</tr>
@@ -61,6 +57,10 @@
   <tr>
 						<td>linkurl：</td>		
 						<td><input class="input-text" type="text" name="linkurl"   v-model="data.linkurl" ></td>
+						</tr>
+  <tr>
+						<td>createtime：</td>		
+						<td><input class="input-text" type="text" name="createtime"   v-model="data.createtime" ></td>
 						</tr>
 </table> <button form-type="submit" class="btn-row-submit">保存</button> 
 </form>
@@ -109,17 +109,25 @@
 						id: this.id
 					},
 					success: function(res) {
-						if (Object.keys(res.data).length > 0) {
-							that.data = res.data;
-							that.imgsList = res.imgsdata;
+						if (Object.keys(res.data.data).length > 0) {
+							that.data = res.data.data;
+							that.imgsList = res.data.imgsdata;
 						} else {
 							that.data = {
-								id: 0,
-								title: "",
-								typeid: 0,
-								total_money: 0,
-								description: "",
-								imgsdata: ""
+								
+id: "0",
+title: "",
+shopid: "0",
+content: "",
+status: "0",
+pid: "0",
+imgurl: "",
+wid: "0",
+userid: "0",
+description: "",
+linkurl: "",
+createtime: "",
+
 							}
 						}
 

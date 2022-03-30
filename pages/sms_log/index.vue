@@ -2,32 +2,65 @@
 	<view>
 		<div class="tabs-border">
 			<div @click="gourl('index')" class="item active">列表</div>
-			<div @click="gourl('add')" class="item">添加</div>
+
 		</div>
-		 <table class="tbs">
-<thead>  <tr>
-   <td>id</td>
-   <td>telephone</td>
-   <td>userid</td>
-   <td>dateline</td>
-   <td>status</td>
-<td>操作</td></tr>
-  </tr>
-</thead> <tr v-for="(item,index) in list" :key="index">
-   <td>{{item.id}}</td>
-   <td>{{item.telephone}}</td>
-   <td>{{item.userid}}</td>
-   <td>{{item.dateline}}</td>
-   <td>{{item.status}}</td>
-<td>
-	<div class="btn-small mgr-5" @click="goAdd(item.id)">编辑</div>
+		<div class="search-form">
+			<form @submit="search">
+				<div class="flex flex-ai-center">
+					<div class="none">
+						<input type="text" name="recommend" v-model="recommend" />
+						<input type="text" name="type" v-model="type" />
+					</div>
 
-					<div class="btn-small mgr-5" @click="goShow(item.id)">查看</div>
+					<text class="mgr-5">ID:</text>
+					<input class="w100 mgr-5 input-text" type="text" name="id" v-model="id" />
+					<text>状态：</text>
+					<select v-model="type" class="w100 mgr-5">
+						<option value="all">全部</option>
+						<option value="new">未审核</option>
+						<option value="pass">已审核</option>
+						<option value="forbid">已禁止</option>
+					</select>
+
+
+
+
+					<button form-type="submit" class="btn">搜索</button>
+					<div class="flex-1"></div>
+				</div>
+			</form>
+		</div>
+		<table class="tbs">
+			<thead>
+				<tr>
+					<td>id</td>
+					<td>telephone</td>
+					<td>userid</td>
+					<td>status</td>
+					<td>createtime</td>
+					<td>操作</td>
+				</tr>
+				</tr>
+			</thead>
+			<tr v-for="(item,index) in list" :key="index">
+				<td>{{item.id}}</td>
+				<td>{{item.telephone}}</td>
+				<td>{{item.userid}}</td>
+				<td>
+					<div @click="toggleStatus(item)" :class="item.status==1?'yes':'no'"></div>
+				</td>
+				<td>{{item.createtime}}</td>
+				<td>
+
 					<div class="btn-small btn-danger" @click="del(item)">删除</div>
-</td>
-  </tr>
- </table>
+				</td>
+			</tr>
+		</table>
 
+		<div class="flex row-box">
+			<div :class="item.per_page==aPage?'cl-red':''" class="pd-10 pointer" v-for="(item,index) in pageList"
+				@click="setPage(item.per_page)" :key="index">{{item.value}}</div>
+		</div>
 	</view>
 </template>
 <script>
@@ -37,14 +70,21 @@
 				pageLoad: false,
 				list: [],
 				per_page: 0,
-				isFirst: true
+				isFirst: true,
+				pageList: [],
+				aPage: 0,
+				type: "all",
+				id: 0,
+				recommend: "",
+				pageList: [],
+				aPage: 0
 			}
 		},
 		onLoad: function() {
 			this.getPage();
 		},
 		onReachBottom: function() {
-			this.getList();
+			//this.getList();
 		},
 		onPullDownRefresh: function() {
 			this.getPage();
@@ -62,15 +102,32 @@
 					url: url
 				})
 			},
-			 
+			setPage: function(per_page) {
+				console.log(per_page)
+				var that = this;
+				that.aPage = per_page;
+				that.per_page = per_page;
+				that.isFirst = true;
+				that.getList();
+			},
+			setPage: function(per_page) {
+
+				var that = this;
+				that.aPage = per_page;
+				that.per_page = per_page;
+				that.isFirst = true;
+				that.getList();
+			},
 			getPage: function() {
 				var that = this;
 				that.app.get({
 					url: that.app.apiHost + "/admin/sms_log/index",
 					success: function(res) {
 						that.pageLoad = true;
-						that.list = res.list;
-						that.per_page = res.per_page;
+						that.list = res.data.list;
+						that.per_page = res.data.per_page;
+						that.pageList = that.app.pageList(res.data.rscount, res.data.limit, res.data
+							.per_page);
 					}
 				})
 			},
@@ -85,80 +142,92 @@
 						per_page: that.per_page
 					},
 					success: function(res) {
-						that.per_page = res.per_page;
+						that.per_page = res.data.per_page;
 						if (that.isFirst) {
-							that.list = res.list;
+							that.list = res.data.list;
 							that.isFirst = false;
 						} else {
-							for (var i in res.list) {
-								that.list.push(res.list[i]);
+							for (var i in res.data.list) {
+								that.list.push(res.data.list[i]);
 							}
 						}
-
+						that.pageList = that.app.pageList(res.data.rscount, res.data.limit, res.data
+							.per_page);
 					}
 				})
 			},
-			toggleStatus:function(item){
-				var that=this;
+			toggleStatus: function(item) {
+				var that = this;
 				that.app.get({
-					url:that.app.apiHost+"/admin/sms_log/status",
-					data:{
-						id:item.id
+					url: that.app.apiHost + "/admin/sms_log/status",
+					data: {
+						id: item.id
 					},
-					success:function(res){
-						item.status=res.status;
+					success: function(res) {
+						item.status = res.data.status;
 					}
 				})
 			},
-			toggleRecommend:function(item){
-				var that=this;
+			toggleRecommend: function(item) {
+				var that = this;
 				that.app.get({
-					url:that.app.apiHost+"/admin/sms_log/recommend",
-					data:{
-						id:item.id
+					url: that.app.apiHost + "/admin/sms_log/recommend",
+					data: {
+						id: item.id
 					},
-					success:function(res){
-						item.is_recommend=res.is_recommend;
+					success: function(res) {
+						item.is_recommend = res.data.is_recommend;
 					}
 				})
 			},
-			del:function(item){
-				var that=this;
+			del: function(item) {
+				var that = this;
 				uni.showModal({
-					content:"确认删除吗",
-					success:function(res){
-						if(!res.confirm){
+					content: "确认删除吗",
+					success: function(res) {
+						if (!res.confirm) {
 							return false;
 						}
 						that.app.get({
-							url:that.app.apiHost+"/admin/sms_log/delete",
-							data:{
-								id:item.id
+							url: that.app.apiHost + "/admin/sms_log/delete",
+							data: {
+								id: item.id
 							},
-							success:function(res){
-								if(res.error){
+							success: function(res) {
+								if (res.error) {
 									return false;
 								}
-								var list=[];
-								for(var i in that.list){
-									if(that.list[i].id!=item.id){
+								var list = [];
+								for (var i in that.list) {
+									if (that.list[i].id != item.id) {
 										list.push(that.list[i]);
 									}
 								}
-								that.list=list;
+								that.list = list;
 							}
 						})
 					}
 				})
 			},
-			goAdd:function(id){
+			goAdd: function(id) {
 				uni.navigateTo({
-					url:"add?id="+id
+					url: "add?id=" + id
 				})
 			},
-			goShow:function(id){
+			goShow: function(id) {
 				uni.navigateTo({
-					url:"show?id="+id
+					url: "show?id=" + id
+				})
+			},
+			search: function(e) {
+				var that = this;
+
+				that.app.get({
+					url: that.app.apiHost + "/admin/sms_log/index",
+					data: e.detail.value,
+					success: function(res) {
+						that.list = res.data.list;
+					}
 				})
 			}
 		},

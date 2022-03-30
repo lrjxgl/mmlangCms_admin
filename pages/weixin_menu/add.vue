@@ -97,17 +97,25 @@
 						id: this.id
 					},
 					success: function(res) {
-						if (Object.keys(res.data).length > 0) {
-							that.data = res.data;
-							that.imgsList = res.imgsdata;
+						if (Object.keys(res.data.data).length > 0) {
+							that.data = res.data.data;
+							that.imgsList = res.data.imgsdata;
 						} else {
 							that.data = {
-								id: 0,
-								title: "",
-								typeid: 0,
-								total_money: 0,
-								description: "",
-								imgsdata: ""
+								
+id: "0",
+userid: "0",
+wid: "0",
+pid: "0",
+orderindex: "0",
+title: "",
+w_type: "",
+w_key: "",
+w_url: "",
+sc_id: "0",
+shopid: "0",
+content: "",
+
 							}
 						}
 

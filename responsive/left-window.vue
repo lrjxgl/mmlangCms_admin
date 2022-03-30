@@ -54,13 +54,13 @@
 				that.app.get({
 					url:that.app.apiHost+"/admin/navbar/get?group_id=2",
 					success:function(res){
-						for(var i in res.list){
-							res.list[i].on=true;
-							for(var j in res.list[i].child){
-								res.list[i].child[j].selected=false;
+						for(var i in res.data.list){
+							res.data.list[i].on=true;
+							for(var j in res.data.list[i].child){
+								res.data.list[i].child[j].selected=false;
 							}
 						}
-						that.list=res.list;
+						that.list=res.data.list;
 					}
 				})
 			}

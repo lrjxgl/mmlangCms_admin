@@ -77,8 +77,8 @@
 					url: that.app.apiHost + "/admin/article_comment/index",
 					success: function(res) {
 						that.pageLoad = true;
-						that.list = res.list;
-						that.per_page = res.per_page;
+						that.list = res.data.list;
+						that.per_page = res.data.per_page;
 					}
 				})
 			},
@@ -90,16 +90,16 @@
 				that.app.get({
 					url: that.app.apiHost + "/admin/article_comment/index",
 					data: {
-						per_page: that.per_page
+						per_page: that.data.per_page
 					},
 					success: function(res) {
-						that.per_page = res.per_page;
+						that.per_page = res.data.per_page;
 						if (that.isFirst) {
-							that.list = res.list;
+							that.list = res.data.list;
 							that.isFirst = false;
 						} else {
-							for (var i in res.list) {
-								that.list.push(res.list[i]);
+							for (var i in res.data.list) {
+								that.list.push(res.data.list[i]);
 							}
 						}
 
@@ -114,7 +114,7 @@
 						id:item.id
 					},
 					success:function(res){
-						item.status=res.status;
+						item.status=res.data.status;
 					}
 				})
 			},
@@ -126,7 +126,7 @@
 						id:item.id
 					},
 					success:function(res){
-						item.is_recommend=res.is_recommend;
+						item.is_recommend=res.data.is_recommend;
 					}
 				})
 			},

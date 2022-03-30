@@ -2,7 +2,7 @@
 	"pages": [{
 		"path": "pages/index/index",
 		"style": {
-			"navigationBarTitleText": "moreLangAdmin"
+			"navigationBarTitleText": "mmlangCms"
 		}
 	}, {
 		"path": "pages/ad/ad-nav",
@@ -18,11 +18,6 @@
 		"path": "pages/ad/index",
 		"style": {
 			"navigationBarTitleText": "ad-index"
-		}
-	}, {
-		"path": "pages/ad/nav",
-		"style": {
-			"navigationBarTitleText": "ad-nav"
 		}
 	}, {
 		"path": "pages/admin/add",
@@ -93,16 +88,6 @@
 		"path": "pages/article_comment/index",
 		"style": {
 			"navigationBarTitleText": "article_comment-index"
-		}
-	}, {
-		"path": "pages/article_data/add",
-		"style": {
-			"navigationBarTitleText": "article_data-add"
-		}
-	}, {
-		"path": "pages/article_data/index",
-		"style": {
-			"navigationBarTitleText": "article_data-index"
 		}
 	}, {
 		"path": "pages/attach/add",
@@ -185,16 +170,6 @@
 			"navigationBarTitleText": "checkin-index"
 		}
 	}, {
-		"path": "pages/checkin_index/add",
-		"style": {
-			"navigationBarTitleText": "checkin_index-add"
-		}
-	}, {
-		"path": "pages/checkin_index/index",
-		"style": {
-			"navigationBarTitleText": "checkin_index-index"
-		}
-	}, {
 		"path": "pages/city/add",
 		"style": {
 			"navigationBarTitleText": "city-add"
@@ -250,36 +225,6 @@
 			"navigationBarTitleText": "dataapi-index"
 		}
 	}, {
-		"path": "pages/daysn/add",
-		"style": {
-			"navigationBarTitleText": "daysn-add"
-		}
-	}, {
-		"path": "pages/daysn/index",
-		"style": {
-			"navigationBarTitleText": "daysn-index"
-		}
-	}, {
-		"path": "pages/dbcache/add",
-		"style": {
-			"navigationBarTitleText": "dbcache-add"
-		}
-	}, {
-		"path": "pages/dbcache/index",
-		"style": {
-			"navigationBarTitleText": "dbcache-index"
-		}
-	}, {
-		"path": "pages/dbsession/add",
-		"style": {
-			"navigationBarTitleText": "dbsession-add"
-		}
-	}, {
-		"path": "pages/dbsession/index",
-		"style": {
-			"navigationBarTitleText": "dbsession-index"
-		}
-	}, {
 		"path": "pages/district/add",
 		"style": {
 			"navigationBarTitleText": "district-add"
@@ -310,46 +255,6 @@
 			"navigationBarTitleText": "express_fee_city-index"
 		}
 	}, {
-		"path": "pages/fav/add",
-		"style": {
-			"navigationBarTitleText": "fav-add"
-		}
-	}, {
-		"path": "pages/fav/index",
-		"style": {
-			"navigationBarTitleText": "fav-index"
-		}
-	}, {
-		"path": "pages/follow/add",
-		"style": {
-			"navigationBarTitleText": "follow-add"
-		}
-	}, {
-		"path": "pages/follow/index",
-		"style": {
-			"navigationBarTitleText": "follow-index"
-		}
-	}, {
-		"path": "pages/followed/add",
-		"style": {
-			"navigationBarTitleText": "followed-add"
-		}
-	}, {
-		"path": "pages/followed/index",
-		"style": {
-			"navigationBarTitleText": "followed-index"
-		}
-	}, {
-		"path": "pages/friend/add",
-		"style": {
-			"navigationBarTitleText": "friend-add"
-		}
-	}, {
-		"path": "pages/friend/index",
-		"style": {
-			"navigationBarTitleText": "friend-index"
-		}
-	}, {
 		"path": "pages/friend_apply/add",
 		"style": {
 			"navigationBarTitleText": "friend_apply-add"
@@ -360,19 +265,9 @@
 			"navigationBarTitleText": "friend_apply-index"
 		}
 	}, {
-		"path": "pages/gold_log/add",
-		"style": {
-			"navigationBarTitleText": "gold_log-add"
-		}
-	}, {
 		"path": "pages/gold_log/index",
 		"style": {
 			"navigationBarTitleText": "gold_log-index"
-		}
-	}, {
-		"path": "pages/grade_log/add",
-		"style": {
-			"navigationBarTitleText": "grade_log-add"
 		}
 	}, {
 		"path": "pages/grade_log/index",
@@ -390,39 +285,14 @@
 			"navigationBarTitleText": "guest-index"
 		}
 	}, {
-		"path": "pages/imgs/add",
-		"style": {
-			"navigationBarTitleText": "imgs-add"
-		}
-	}, {
-		"path": "pages/imgs/index",
-		"style": {
-			"navigationBarTitleText": "imgs-index"
-		}
-	}, {
-		"path": "pages/invite/add",
-		"style": {
-			"navigationBarTitleText": "invite-add"
-		}
-	}, {
 		"path": "pages/invite/index",
 		"style": {
 			"navigationBarTitleText": "invite-index"
 		}
 	}, {
-		"path": "pages/invite_account/add",
-		"style": {
-			"navigationBarTitleText": "invite_account-add"
-		}
-	}, {
 		"path": "pages/invite_account/index",
 		"style": {
 			"navigationBarTitleText": "invite_account-index"
-		}
-	}, {
-		"path": "pages/invite_account_log/add",
-		"style": {
-			"navigationBarTitleText": "invite_account_log-add"
 		}
 	}, {
 		"path": "pages/invite_account_log/index",
@@ -440,24 +310,9 @@
 			"navigationBarTitleText": "kefu_msg-index"
 		}
 	}, {
-		"path": "pages/kefu_msgindex/add",
-		"style": {
-			"navigationBarTitleText": "kefu_msgindex-add"
-		}
-	}, {
 		"path": "pages/kefu_msgindex/index",
 		"style": {
 			"navigationBarTitleText": "kefu_msgindex-index"
-		}
-	}, {
-		"path": "pages/love/add",
-		"style": {
-			"navigationBarTitleText": "love-add"
-		}
-	}, {
-		"path": "pages/love/index",
-		"style": {
-			"navigationBarTitleText": "love-index"
 		}
 	},{
 		"path":"pages/login/index",
@@ -466,41 +321,6 @@
 			"leftWindow":false,
 			"topWindow":false,
 			"rightWindow":false
-		}
-	}, {
-		"path": "pages/maxid/add",
-		"style": {
-			"navigationBarTitleText": "maxid-add"
-		}
-	}, {
-		"path": "pages/maxid/index",
-		"style": {
-			"navigationBarTitleText": "maxid-index"
-		}
-	}, {
-		"path": "pages/model/add",
-		"style": {
-			"navigationBarTitleText": "model-add"
-		}
-	}, {
-		"path": "pages/model/index",
-		"style": {
-			"navigationBarTitleText": "model-index"
-		}
-	}, {
-		"path": "pages/model_index/add",
-		"style": {
-			"navigationBarTitleText": "model_index-add"
-		}
-	}, {
-		"path": "pages/model_index/index",
-		"style": {
-			"navigationBarTitleText": "model_index-index"
-		}
-	}, {
-		"path": "pages/module/add",
-		"style": {
-			"navigationBarTitleText": "module-add"
 		}
 	}, {
 		"path": "pages/module/index",
@@ -521,11 +341,6 @@
 		"path": "pages/navbar/nav-tab",
 		"style": {
 			"navigationBarTitleText": "navbar-nav-tab"
-		}
-	}, {
-		"path": "pages/notice/add",
-		"style": {
-			"navigationBarTitleText": "notice-add"
 		}
 	}, {
 		"path": "pages/notice/index",
@@ -643,11 +458,6 @@
 			"navigationBarTitleText": "pagetpl-index"
 		}
 	}, {
-		"path": "pages/pay_log/add",
-		"style": {
-			"navigationBarTitleText": "pay_log-add"
-		}
-	}, {
 		"path": "pages/pay_log/index",
 		"style": {
 			"navigationBarTitleText": "pay_log-index"
@@ -663,24 +473,9 @@
 			"navigationBarTitleText": "permission-index"
 		}
 	}, {
-		"path": "pages/pm/add",
-		"style": {
-			"navigationBarTitleText": "pm-add"
-		}
-	}, {
 		"path": "pages/pm/index",
 		"style": {
 			"navigationBarTitleText": "pm-index"
-		}
-	}, {
-		"path": "pages/pm_index/add",
-		"style": {
-			"navigationBarTitleText": "pm_index-add"
-		}
-	}, {
-		"path": "pages/pm_index/index",
-		"style": {
-			"navigationBarTitleText": "pm_index-index"
 		}
 	}, {
 		"path": "pages/pv/add",
@@ -721,16 +516,6 @@
 		"path": "pages/pv_uv/index",
 		"style": {
 			"navigationBarTitleText": "pv_uv-index"
-		}
-	}, {
-		"path": "pages/queue/add",
-		"style": {
-			"navigationBarTitleText": "queue-add"
-		}
-	}, {
-		"path": "pages/queue/index",
-		"style": {
-			"navigationBarTitleText": "queue-index"
 		}
 	}, {
 		"path": "pages/recharge/add",
@@ -796,11 +581,6 @@
 		"path": "pages/site_city/index",
 		"style": {
 			"navigationBarTitleText": "site_city-index"
-		}
-	}, {
-		"path": "pages/sms_log/add",
-		"style": {
-			"navigationBarTitleText": "sms_log-add"
 		}
 	}, {
 		"path": "pages/sms_log/index",
@@ -916,16 +696,6 @@
 		"path": "pages/user_black/index",
 		"style": {
 			"navigationBarTitleText": "user_black-index"
-		}
-	}, {
-		"path": "pages/user_expand/add",
-		"style": {
-			"navigationBarTitleText": "user_expand-add"
-		}
-	}, {
-		"path": "pages/user_expand/index",
-		"style": {
-			"navigationBarTitleText": "user_expand-index"
 		}
 	}, {
 		"path": "pages/user_group/add",
@@ -1092,26 +862,6 @@
 				"navigationBarTitleText":"forum_comment-index"
 			}
 		},{
-			"path":"forum_data/add",
-			"style":{
-				"navigationBarTitleText":"forum_data-add"
-			}
-		},{
-			"path":"forum_data/index",
-			"style":{
-				"navigationBarTitleText":"forum_data-index"
-			}
-		},{
-			"path":"forum_feeds/add",
-			"style":{
-				"navigationBarTitleText":"forum_feeds-add"
-			}
-		},{
-			"path":"forum_feeds/index",
-			"style":{
-				"navigationBarTitleText":"forum_feeds-index"
-			}
-		},{
 			"path":"forum_group/add",
 			"style":{
 				"navigationBarTitleText":"forum_group-add"
@@ -1130,16 +880,6 @@
 			"path":"forum_group_admin/index",
 			"style":{
 				"navigationBarTitleText":"forum_group_admin-index"
-			}
-		},{
-			"path":"forum_img/add",
-			"style":{
-				"navigationBarTitleText":"forum_img-add"
-			}
-		},{
-			"path":"forum_img/index",
-			"style":{
-				"navigationBarTitleText":"forum_img-index"
 			}
 		},{
 			"path":"forum_tags/add",

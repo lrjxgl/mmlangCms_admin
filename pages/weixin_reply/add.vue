@@ -143,17 +143,35 @@
 						id: this.id
 					},
 					success: function(res) {
-						if (Object.keys(res.data).length > 0) {
-							that.data = res.data;
-							that.imgsList = res.imgsdata;
+						if (Object.keys(res.data.data).length > 0) {
+							that.data = res.data.data;
+							that.imgsList = res.data.imgsdata;
 						} else {
 							that.data = {
-								id: 0,
-								title: "",
-								typeid: 0,
-								total_money: 0,
-								description: "",
-								imgsdata: ""
+								
+id: "0",
+status: "0",
+openid: "",
+msgtype: "",
+createtime: "0",
+content: "",
+msgid: "",
+picurl: "",
+mediaid: "",
+thumbmediaid: "",
+format: "",
+location_x: "",
+location_y: "",
+scale: "0",
+label: "",
+title: "",
+description: "",
+url: "",
+wid: "0",
+shopid: "0",
+fromusername: "",
+tousername: "",
+
 							}
 						}
 

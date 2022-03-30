@@ -13,9 +13,8 @@
 					<td>名称</td>
 					<td>排序</td>
 					<td>类型</td>
-					<td>栏目模板</td>
-					<td>列表模板</td>
-					<td>详情模板</td>
+					<td>状态</td>
+					 
 					<td>操作</td>
 				</tr>
 				</tr>
@@ -29,9 +28,8 @@
 					
 					<td>{{item.orderindex}}</td>
 					<td>{{item.type_id}}</td>
-					<td>{{item.cat_tpl}}</td>
-					<td>{{item.list_tpl}}</td>
-					<td>{{item.show_tpl}}</td>
+					<td><div :class="item.status==1?'yes':'no'"></div></td>
+					 
 					<td>
 						<div class="btn-small mgr-5" @click="goAdd(item.catid)">编辑</div>
 				
@@ -47,9 +45,10 @@
 					
 					<td>{{cc.orderindex}}</td>
 					<td>{{cc.type_id}}</td>
-					<td>{{cc.cat_tpl}}</td>
-					<td>{{cc.list_tpl}}</td>
-					<td>{{cc.show_tpl}}</td>
+					<td>
+						<div :class="cc.status==1?'yes':'no'"></div>
+					</td>
+					 
 					<td>
 						<div class="btn-small mgr-5" @click="goAdd(cc.catid)">编辑</div>
 				
@@ -104,8 +103,8 @@
 					url: that.app.apiHost + "/admin/category/index",
 					success: function(res) {
 						that.pageLoad = true;
-						that.list = res.list;
-						that.per_page = res.per_page;
+						that.list = res.data.list;
+						that.per_page = res.data.per_page;
 					}
 				})
 			},
@@ -122,13 +121,13 @@
 						tablename:this.tablename
 					},
 					success: function(res) {
-						that.per_page = res.per_page;
+						that.per_page = res.data.per_page;
 						if (that.isFirst) {
-							that.list = res.list;
+							that.list = res.data.list;
 							that.isFirst = false;
 						} else {
-							for (var i in res.list) {
-								that.list.push(res.list[i]);
+							for (var i in res.data.list) {
+								that.list.push(res.data.list[i]);
 							}
 						}
 
@@ -149,7 +148,7 @@
 						id: item.id
 					},
 					success: function(res) {
-						item.status = res.status;
+						item.status = res.data.status;
 					}
 				})
 			},
@@ -161,7 +160,7 @@
 						id: item.id
 					},
 					success: function(res) {
-						item.is_recommend = res.is_recommend;
+						item.is_recommend = res.data.is_recommend;
 					}
 				})
 			},
@@ -196,12 +195,12 @@
 			},
 			goAdd: function(id) {
 				uni.navigateTo({
-					url: "add?id=" + id
+					url: "add?catid=" + id
 				})
 			},
 			goShow: function(id) {
 				uni.navigateTo({
-					url: "show?id=" + id
+					url: "show?catid=" + id
 				})
 			}
 		},

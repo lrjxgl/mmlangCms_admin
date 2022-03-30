@@ -62,15 +62,15 @@
 		},
 		data: function() {
 			return {
-				id: 0,
+				tableid: 0,
 				pageLoad: false,
 				data: {},
 				imgsList: []
 			}
 		},
 		onLoad: function(ops) {
-			if (ops.id != undefined) {
-				this.id = ops.id;
+			if (ops.tableid != undefined) {
+				this.tableid = ops.tableid;
 			}
 			console.log("onLoad")
 			this.getPage();
@@ -92,20 +92,26 @@
 				that.app.get({
 					url: that.app.apiHost + "/admin/table/add",
 					data: {
-						id: this.id
+						tableid: this.tableid
 					},
 					success: function(res) {
-						if (Object.keys(res.data).length > 0) {
-							that.data = res.data;
-							that.imgsList = res.imgsdata;
+						if (Object.keys(res.data.data).length > 0) {
+							that.data = res.data.data;
+							that.imgsList = res.data.imgsdata;
 						} else {
 							that.data = {
-								id: 0,
-								title: "",
-								typeid: 0,
-								total_money: 0,
-								description: "",
-								imgsdata: ""
+								
+tableid: "0",
+title: "",
+tablename: "",
+description: "",
+status: "0",
+isLogin: "0",
+isList: "0",
+showTpl: "",
+listTpl: "",
+addTpl: "",
+
 							}
 						}
 

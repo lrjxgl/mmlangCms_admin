@@ -59,7 +59,7 @@
 					url:that.app.apiHost+"/admin/navbar/get?group_id=1",
 					success:function(res){
 						 
-						that.list=res.list;
+						that.list=res.data.list;
 					}
 				})
 			},

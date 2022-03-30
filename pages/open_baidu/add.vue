@@ -99,17 +99,24 @@
 						id: this.id
 					},
 					success: function(res) {
-						if (Object.keys(res.data).length > 0) {
-							that.data = res.data;
-							that.imgsList = res.imgsdata;
+						if (Object.keys(res.data.data).length > 0) {
+							that.data = res.data.data;
+							that.imgsList = res.data.imgsdata;
 						} else {
 							that.data = {
-								id: 0,
-								title: "",
-								typeid: 0,
-								total_money: 0,
-								description: "",
-								imgsdata: ""
+								
+id: "0",
+title: "",
+createtime: "",
+appid: "",
+appkey: "",
+status: "0",
+merchant_private_key: "",
+alipay_public_key: "",
+notify_url: "",
+return_url: "",
+openlogin: "0",
+
 							}
 						}
 

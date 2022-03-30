@@ -104,15 +104,15 @@
 		},
 		data: function() {
 			return {
-				id: 0,
+				userid: 0,
 				pageLoad: false,
 				data: {},
 				imgsList: []
 			}
 		},
 		onLoad: function(ops) {
-			if (ops.id != undefined) {
-				this.id = ops.id;
+			if (ops.userid != undefined) {
+				this.userid = ops.userid;
 			}
 			console.log("onLoad")
 			this.getPage();
@@ -134,20 +134,16 @@
 				that.app.get({
 					url: that.app.apiHost + "/admin/user/add",
 					data: {
-						id: this.id
+						userid: this.userid
 					},
 					success: function(res) {
-						if (Object.keys(res.data).length > 0) {
-							that.data = res.data;
-							that.imgsList = res.imgsdata;
+						if (Object.keys(res.data.data).length > 0) {
+							that.data = res.data.data;
+							 
 						} else {
 							that.data = {
-								id: 0,
-								title: "",
-								typeid: 0,
-								total_money: 0,
-								description: "",
-								imgsdata: ""
+								userid: 0,
+								nickname: ""
 							}
 						}
 

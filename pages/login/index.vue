@@ -52,10 +52,10 @@
 						if(res.error){
 							return false;
 						}
-						uni.setStorageSync("admin.token",res.token);
-						uni.setStorageSync("admin.token_expire",res.token_expire);
-						uni.setStorageSync("admin.refresh_token",res.refresh_token);
-						uni.setStorageSync("admin.refresh_token_expire",res.refresh_token_expire);
+						uni.setStorageSync("admin.token",res.data.token);
+						uni.setStorageSync("admin.token_expire",res.data.token_expire);
+						uni.setStorageSync("admin.refresh_token",res.data.refresh_token);
+						uni.setStorageSync("admin.refresh_token_expire",res.data.refresh_token_expire);
 						uni.reLaunch({
 							url:"/"
 						})

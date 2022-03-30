@@ -107,17 +107,26 @@
 						id: this.id
 					},
 					success: function(res) {
-						if (Object.keys(res.data).length > 0) {
-							that.data = res.data;
-							that.imgsList = res.imgsdata;
+						if (Object.keys(res.data.data).length > 0) {
+							that.data = res.data.data;
+							that.imgsList = res.data.imgsdata;
 						} else {
 							that.data = {
-								id: 0,
-								title: "",
-								typeid: 0,
-								total_money: 0,
-								description: "",
-								imgsdata: ""
+								
+id: "0",
+title: "",
+createtime: "",
+appid: "",
+appkey: "",
+status: "0",
+appcert_path: "",
+alicert_path: "",
+rootcert_path: "",
+notify_url: "",
+return_url: "",
+openlogin: "0",
+merchant_private_key: "",
+
 							}
 						}
 

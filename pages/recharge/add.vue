@@ -35,10 +35,6 @@
 						<td><input class="input-text" type="text" name="type_id"   v-model="data.type_id" ></td>
 						</tr>
   <tr>
-						<td>创建时间：</td>		
-						<td><input class="input-text" type="text" name="dateline"   v-model="data.dateline" ></td>
-						</tr>
-  <tr>
 						<td>1支付成功：</td>		
 						<td>
 						<input type="text" class="none" name="status" v-model="data.status" />
@@ -63,6 +59,10 @@
   <tr>
 						<td>订单处理内容：</td>		
 						<td><input class="input-text" type="text" name="orderdata"   v-model="data.orderdata" ></td>
+						</tr>
+  <tr>
+						<td>createtime：</td>		
+						<td><input class="input-text" type="text" name="createtime"   v-model="data.createtime" ></td>
 						</tr>
 </table> <button form-type="submit" class="btn-row-submit">保存</button> 
 </form>
@@ -111,17 +111,27 @@
 						id: this.id
 					},
 					success: function(res) {
-						if (Object.keys(res.data).length > 0) {
-							that.data = res.data;
-							that.imgsList = res.imgsdata;
+						if (Object.keys(res.data.data).length > 0) {
+							that.data = res.data.data;
+							that.imgsList = res.data.imgsdata;
 						} else {
 							that.data = {
-								id: 0,
-								title: "",
-								typeid: 0,
-								total_money: 0,
-								description: "",
-								imgsdata: ""
+								
+							id: "0",
+							siteid: "0",
+							userid: "0",
+							money: "0",
+							pay_type: "",
+							openid: "",
+							pay_orderno: "",
+							type_id: "0",
+							status: "0",
+							orderno: "",
+							orderinfo: "",
+							tablename: "",
+							orderdata: "",
+							createtime: "",
+
 							}
 						}
 

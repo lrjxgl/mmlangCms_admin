@@ -204,9 +204,9 @@
 						id: this.id
 					},
 					success: function(res) {
-						if (Object.keys(res.data).length > 0) {
-							that.data = res.data;
-							that.imgList = res.imgList;
+						if (Object.keys(res.data.data).length > 0) {
+							that.data = res.data.data;
+							that.imgList = res.data.imgList;
 						} else {
 							that.data = {
 								id: 0,
@@ -217,7 +217,7 @@
 								imgsdata: ""
 							}
 						}
-						that.catList = res.catList;
+						that.catList = res.data.catList;
 						that.pageLoad = true;
 					}
 				})

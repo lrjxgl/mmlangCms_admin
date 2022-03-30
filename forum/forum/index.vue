@@ -7,26 +7,26 @@
 		 <table class="tbs">
 <thead>  <tr>
    <td>id</td>
-   <td>title</td>
-   <td>userid</td>
-   <td>gid</td>
-   <td>catid</td>
-   <td>love_num</td>
-   <td>fav_num</td>
-   <td>forward_num</td>
-   <td>dateline</td>
+   <td>主题</td>
+   <td>用户</td>
+   <td>板块</td>
+   <td>分类</td>
+   <td>喜欢</td>
+   <td>收藏</td>
+   <td>观看</td>
+   <td>发布时间</td>
 <td>操作</td></tr>
   </tr>
 </thead> <tr v-for="(item,index) in list" :key="index">
    <td>{{item.id}}</td>
    <td>{{item.title}}</td>
-   <td>{{item.userid}}</td>
-   <td>{{item.gid}}</td>
-   <td>{{item.catid}}</td>
+   <td>{{item.user.nickname}}</td>
+   <td>{{item.group.title}}</td>
+   <td>{{item.cat.title}}</td>
    <td>{{item.love_num}}</td>
    <td>{{item.fav_num}}</td>
-   <td>{{item.forward_num}}</td>
-   <td>{{item.dateline}}</td>
+<td>{{item.view_num}}</td>
+   <td>{{item.createtime}}</td>
 <td>
 	<div class="btn-small mgr-5" @click="goAdd(item.id)">编辑</div>
 
@@ -77,8 +77,8 @@
 					url: that.app.apiHost + "/admin/forum/index",
 					success: function(res) {
 						that.pageLoad = true;
-						that.list = res.list;
-						that.per_page = res.per_page;
+						that.list = res.data.list;
+						that.per_page = res.data.per_page;
 					}
 				})
 			},
@@ -93,13 +93,13 @@
 						per_page: that.per_page
 					},
 					success: function(res) {
-						that.per_page = res.per_page;
+						that.per_page = res.data.per_page;
 						if (that.isFirst) {
-							that.list = res.list;
+							that.list = res.data.list;
 							that.isFirst = false;
 						} else {
-							for (var i in res.list) {
-								that.list.push(res.list[i]);
+							for (var i in res.data.list) {
+								that.list.push(res.data.list[i]);
 							}
 						}
 
@@ -114,7 +114,7 @@
 						id:item.id
 					},
 					success:function(res){
-						item.status=res.status;
+						item.status=res.data.status;
 					}
 				})
 			},
@@ -126,7 +126,7 @@
 						id:item.id
 					},
 					success:function(res){
-						item.is_recommend=res.is_recommend;
+						item.is_recommend=res.data.is_recommend;
 					}
 				})
 			},

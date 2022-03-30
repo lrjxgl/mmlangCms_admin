@@ -130,9 +130,9 @@
 						pid:this.pid
 					},
 					success: function(res) {
-						if (res.data) {
-							that.data = res.data;
-							that.imgsList = res.imgsdata;
+						if (res.data.data) {
+							that.data = res.data.data;
+							that.imgsList = res.data.imgsdata;
 						} else {
 							that.data = {
 								id: 0,
@@ -143,10 +143,10 @@
 								imgsdata: ""
 							}
 						}
-						that.parentList=res.parentList;
-						that.groupList=res.groupList;
-						that.group_id=res.group_id;
-						that.pid=res.pid;
+						that.parentList=res.data.parentList;
+						that.groupList=res.data.groupList;
+						that.group_id=res.data.group_id;
+						that.pid=res.data.pid;
 						that.pageLoad = true;
 					}
 				})

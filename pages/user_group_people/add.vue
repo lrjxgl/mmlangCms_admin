@@ -15,8 +15,8 @@
 						<td><input class="input-text" type="text" name="userid"   v-model="data.userid" ></td>
 						</tr>
   <tr>
-						<td>dateline：</td>		
-						<td><input class="input-text" type="text" name="dateline"   v-model="data.dateline" ></td>
+						<td>createtime：</td>		
+						<td><input class="input-text" type="text" name="createtime"   v-model="data.createtime" ></td>
 						</tr>
 </table> <button form-type="submit" class="btn-row-submit">保存</button> 
 </form>
@@ -65,17 +65,17 @@
 						id: this.id
 					},
 					success: function(res) {
-						if (Object.keys(res.data).length > 0) {
-							that.data = res.data;
-							that.imgsList = res.imgsdata;
+						if (Object.keys(res.data.data).length > 0) {
+							that.data = res.data.data;
+							that.imgsList = res.data.imgsdata;
 						} else {
 							that.data = {
-								id: 0,
-								title: "",
-								typeid: 0,
-								total_money: 0,
-								description: "",
-								imgsdata: ""
+								
+id: "0",
+gid: "0",
+userid: "0",
+createtime: "",
+
 							}
 						}
 

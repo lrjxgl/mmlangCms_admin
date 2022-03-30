@@ -112,8 +112,8 @@
  						tag_id: this.tag_id
  					},
  					success: function(res) {
- 						if (Object.keys(res.data).length > 0) {
- 							that.data = res.data;
+ 						if (Object.keys(res.data.data).length > 0) {
+ 							that.data = res.data.data;
  							 
  						} else {
  							that.data = {
@@ -132,7 +132,7 @@
 
  							}
  						}
-						that.tagList=res.tagList;
+						that.tagList=res.data.tagList;
  						that.pageLoad = true;
  					}
  				})

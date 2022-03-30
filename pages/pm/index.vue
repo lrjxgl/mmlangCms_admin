@@ -2,7 +2,33 @@
 	<view>
 		<div class="tabs-border">
 			<div @click="gourl('index')" class="item active">列表</div>
-			<div @click="gourl('add')" class="item">添加</div>
+		 
+		</div>
+		<div class="search-form">
+			<form @submit="search">
+				<div class="flex flex-ai-center">
+					<div class="none">
+						<input type="text" name="recommend" v-model="recommend" />
+						<input type="text" name="type" v-model="type" />
+					</div>
+
+					<text class="mgr-5">ID:</text>
+					<input class="w100 mgr-5 input-text" type="text" name="id" v-model="id" />
+					<text>状态：</text>
+					<select v-model="type" class="w100 mgr-5">
+						<option value="all">全部</option>
+						<option value="new">未审核</option>
+						<option value="pass">已审核</option>
+						<option value="forbid">已禁止</option>
+					</select>
+					
+					
+					
+
+					<button form-type="submit" class="btn">搜索</button>
+					<div class="flex-1"></div>
+				</div>
+			</form>
 		</div>
 		 <table class="tbs">
 <thead>  <tr>
@@ -19,17 +45,20 @@
    <td>{{item.userid}}</td>
    <td>{{item.type_id}}</td>
    <td>{{item.t_userid}}</td>
-   <td>{{item.status}}</td>
+<td><div @click="toggleStatus(item)" :class="item.status==1?'yes':'no'"></div></td>
    <td>{{item.createtime}}</td>
 <td>
 	<div class="btn-small mgr-5" @click="goAdd(item.id)">编辑</div>
 
-					<div class="btn-small mgr-5" @click="goShow(item.id)">查看</div>
+	 
 					<div class="btn-small btn-danger" @click="del(item)">删除</div>
 </td>
   </tr>
  </table>
 
+		<div class="flex row-box">
+				<div :class="item.per_page==aPage?'cl-red':''" class="pd-10 pointer" v-for="(item,index) in pageList" @click="setPage(item.per_page)" :key="index">{{item.value}}</div>
+			</div>
 	</view>
 </template>
 <script>
@@ -39,7 +68,9 @@
 				pageLoad: false,
 				list: [],
 				per_page: 0,
-				isFirst: true
+				isFirst: true,
+				pageList:[],
+				aPage:0
 			}
 		},
 		onLoad: function() {
@@ -64,7 +95,14 @@
 					url: url
 				})
 			},
-			 
+			setPage:function(per_page){
+				 
+				var that=this;
+				that.aPage=per_page;
+				that.per_page=per_page;
+				that.isFirst=true;
+				that.getList();
+			}, 
 			getPage: function() {
 				var that = this;
 				that.app.get({
@@ -73,6 +111,7 @@
 						that.pageLoad = true;
 						that.list = res.list;
 						that.per_page = res.per_page;
+						that.pageList=that.app.pageList(res.rscount,res.limit,res.per_page);
 					}
 				})
 			},
@@ -161,6 +200,17 @@
 			goShow:function(id){
 				uni.navigateTo({
 					url:"show?id="+id
+				})
+			},
+			search: function(e) {
+				var that = this;
+				
+				that.app.get({
+					url: that.app.apiHost + "/admin/pm/index",
+					data: e.detail.value,
+					success:function(res) {
+						that.list = res.list;
+					}
 				})
 			}
 		},

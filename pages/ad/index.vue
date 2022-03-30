@@ -77,7 +77,7 @@
 			this.getPage();
 		},
 		onReachBottom: function() {
-			this.getList();
+			//this.getList();
 		},
 		onPullDownRefresh: function() {
 			this.getPage();
@@ -114,9 +114,9 @@
 					url: that.app.apiHost + "/admin/ad/index",
 					success: function(res) {
 						that.pageLoad = true;
-						that.list = res.list;
-						that.per_page = res.per_page;
-						that.pageList = that.app.pageList(res.rscount, res.limit, res.per_page);
+						that.list = res.data.list;
+						that.per_page = res.data.per_page;
+						that.pageList = that.app.pageList(res.data.rscount, res.data.limit, res.data.per_page);
 					}
 				})
 			},
@@ -131,16 +131,16 @@
 						per_page: that.per_page
 					},
 					success: function(res) {
-						that.per_page = res.per_page;
+						that.per_page = res.data.per_page;
 						if (that.isFirst) {
-							that.list = res.list;
+							that.list = res.data.list;
 							that.isFirst = false;
 						} else {
-							for (var i in res.list) {
-								that.list.push(res.list[i]);
+							for (var i in res.data.list) {
+								that.list.push(res.data.list[i]);
 							}
 						}
-						that.pageList = that.app.pageList(res.rscount, res.limit, res.per_page);
+						that.pageList = that.app.pageList(res.data.rscount, res.data.limit, res.data.per_page);
 					}
 				})
 			},
@@ -152,7 +152,7 @@
 						id: item.id
 					},
 					success: function(res) {
-						item.status = res.status;
+						item.status = res.data.status;
 					}
 				})
 			},

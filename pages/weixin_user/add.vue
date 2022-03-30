@@ -11,10 +11,6 @@
 						<td><input class="input-text" type="text" name="openid"   v-model="data.openid" ></td>
 						</tr>
   <tr>
-						<td>dateline：</td>		
-						<td><input class="input-text" type="text" name="dateline"   v-model="data.dateline" ></td>
-						</tr>
-  <tr>
 						<td>add_time：</td>		
 						<td><input class="input-text" type="text" name="add_time"   v-model="data.add_time" ></td>
 						</tr>
@@ -82,6 +78,10 @@
 						<td>shopid：</td>		
 						<td><input class="input-text" type="text" name="shopid"   v-model="data.shopid" ></td>
 						</tr>
+  <tr>
+						<td>createtime：</td>		
+						<td><input class="input-text" type="text" name="createtime"   v-model="data.createtime" ></td>
+						</tr>
 </table> <button form-type="submit" class="btn-row-submit">保存</button> 
 </form>
 	</view>
@@ -129,17 +129,30 @@
 						id: this.id
 					},
 					success: function(res) {
-						if (Object.keys(res.data).length > 0) {
-							that.data = res.data;
-							that.imgsList = res.imgsdata;
+						if (Object.keys(res.data.data).length > 0) {
+							that.data = res.data.data;
+							that.imgsList = res.data.imgsdata;
 						} else {
 							that.data = {
-								id: 0,
-								title: "",
-								typeid: 0,
-								total_money: 0,
-								description: "",
-								imgsdata: ""
+								
+id: "0",
+openid: "",
+add_time: "0",
+last_time: "0",
+del_time: "0",
+status: "0",
+nickname: "",
+sex: "0",
+city: "",
+country: "",
+province: "",
+user_head: "",
+update_time: "0",
+reply_num: "0",
+wid: "0",
+shopid: "0",
+createtime: "",
+
 							}
 						}
 

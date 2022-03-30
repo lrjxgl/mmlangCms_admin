@@ -62,8 +62,8 @@
 						id: this.id
 					},
 					success: function(res) {
-						if (Object.keys(res.data).length > 0) {
-							that.data = res.data;
+						if (Object.keys(res.data.data).length > 0) {
+							that.data = res.data.data;
 							that.imgsList = res.imgsdata;
 						} else {
 							that.data = {

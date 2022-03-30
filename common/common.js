@@ -1,8 +1,8 @@
 module.exports = {
 	//apiHost:"http://fd175.skymvc.com/",
-	//apiHost: "http://127.0.0.1:8080",
-	//apiHost: "http://127.0.0.1:888"
-	apiHost: "http://127.0.0.1:888",
+	apiHost: "http://127.0.0.1:8080",//java
+	//apiHost: "http://127.0.0.1:888",
+	//apiHost: "http://127.0.0.1:1323",
 	appRoot: "http://127.0.0.1:8081",
 	wsHost: "wss://wss.deituicms.com:8282",
 	pmTimer: 0,

@@ -58,15 +58,15 @@
 		},
 		data: function() {
 			return {
-				id: 0,
+				sc_id: 0,
 				pageLoad: false,
 				data: {},
 				imgsList: []
 			}
 		},
 		onLoad: function(ops) {
-			if (ops.id != undefined) {
-				this.id = ops.id;
+			if (ops.sc_id != undefined) {
+				this.sc_id = ops.sc_id;
 			}
 			console.log("onLoad")
 			this.getPage();
@@ -88,20 +88,25 @@
 				that.app.get({
 					url: that.app.apiHost + "/admin/site_city/add",
 					data: {
-						id: this.id
+						sc_id: this.sc_id
 					},
 					success: function(res) {
-						if (Object.keys(res.data).length > 0) {
-							that.data = res.data;
-							that.imgsList = res.imgsdata;
+						if (Object.keys(res.data.data).length > 0) {
+							that.data = res.data.data;
+							that.imgsList = res.data.imgsdata;
 						} else {
 							that.data = {
-								id: 0,
-								title: "",
-								typeid: 0,
-								total_money: 0,
-								description: "",
-								imgsdata: ""
+								
+sc_id: "0",
+title: "",
+cityid: "0",
+lat: "0",
+lng: "0",
+orderindex: "0",
+status: "0",
+pid: "0",
+siteid: "0",
+
 							}
 						}
 

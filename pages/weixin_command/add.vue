@@ -27,10 +27,6 @@
 						<td><input class="input-text" type="text" name="content"   v-model="data.content" ></td>
 						</tr>
   <tr>
-						<td>dateline：</td>		
-						<td><input class="input-text" type="text" name="dateline"   v-model="data.dateline" ></td>
-						</tr>
-  <tr>
 						<td>fun：</td>		
 						<td><input class="input-text" type="text" name="fun"   v-model="data.fun" ></td>
 						</tr>
@@ -49,6 +45,10 @@
   <tr>
 						<td>sc_id：</td>		
 						<td><input class="input-text" type="text" name="sc_id"   v-model="data.sc_id" ></td>
+						</tr>
+  <tr>
+						<td>createtime：</td>		
+						<td><input class="input-text" type="text" name="createtime"   v-model="data.createtime" ></td>
 						</tr>
 </table> <button form-type="submit" class="btn-row-submit">保存</button> 
 </form>
@@ -97,17 +97,25 @@
 						id: this.id
 					},
 					success: function(res) {
-						if (Object.keys(res.data).length > 0) {
-							that.data = res.data;
-							that.imgsList = res.imgsdata;
+						if (Object.keys(res.data.data).length > 0) {
+							that.data = res.data.data;
+							that.imgsList = res.data.imgsdata;
 						} else {
 							that.data = {
-								id: 0,
-								title: "",
-								typeid: 0,
-								total_money: 0,
-								description: "",
-								imgsdata: ""
+								
+id: "0",
+wid: "0",
+title: "",
+command: "",
+type_id: "0",
+content: "",
+fun: "",
+isdefault: "0",
+userid: "0",
+shopid: "0",
+sc_id: "0",
+createtime: "",
+
 							}
 						}
 

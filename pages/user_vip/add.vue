@@ -5,8 +5,12 @@
 			<div @click="gourl('add')" class="item active">添加</div>
 		</div>
 <form @submit="submit">
-<input type="text" name="userid" class="none" v-model="data.userid" >
+<input type="text" name="id" class="none" v-model="data.id" >
  <table class="table-add">  <tr>
+						<td>userid：</td>		
+						<td><input class="input-text" type="text" name="userid"   v-model="data.userid" ></td>
+						</tr>
+  <tr>
 						<td>开始时间：</td>		
 						<td><input class="input-text" type="text" name="starttime"   v-model="data.starttime" ></td>
 						</tr>
@@ -21,6 +25,16 @@
   <tr>
 						<td>类型：</td>		
 						<td><input class="input-text" type="text" name="stype"   v-model="data.stype" ></td>
+						</tr>
+  <tr>
+						<td>status：</td>		
+						<td>
+						<input type="text" class="none" name="status" v-model="data.status" />
+						<radio-group>
+							<radio type="text" class="mgr-5" checked="data.status==1"  value="1" > 上线</radio>
+							<radio type="text" checked="data.status!=1"    value="2" > 下线</radio>
+						</radio-group>	
+						</td>
 						</tr>
 </table> <button form-type="submit" class="btn-row-submit">保存</button> 
 </form>
@@ -69,17 +83,20 @@
 						id: this.id
 					},
 					success: function(res) {
-						if (Object.keys(res.data).length > 0) {
-							that.data = res.data;
-							that.imgsList = res.imgsdata;
+						if (Object.keys(res.data.data).length > 0) {
+							that.data = res.data.data;
+							that.imgsList = res.data.imgsdata;
 						} else {
 							that.data = {
-								id: 0,
-								title: "",
-								typeid: 0,
-								total_money: 0,
-								description: "",
-								imgsdata: ""
+								
+id: "0",
+userid: "0",
+starttime: "0",
+firsttime: "0",
+endtime: "0",
+stype: "0",
+status: "0",
+
 							}
 						}
 
